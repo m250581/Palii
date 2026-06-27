@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirf Tumhare Liye, Princess ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&family=Courier+Prime&display=swap');
+        
+        /* 🌟 General Styles */
+        body { margin: 0; font-family: 'Quicksand', sans-serif; background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #ffecd2, #fcb69f); background-size: 400% 400%; animation: gradientBG 15s ease infinite; color: #4a4a4a; text-align: center; overflow-x: hidden; scroll-behavior: smooth; }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        /* 💖 Floating Hearts */
+        .heart-bg { position: fixed; color: rgba(255, 105, 180, 0.4); font-size: 24px; z-index: -1; animation: floatUp linear infinite; }
+        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0.5); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+        
+        /* 🎁 Ribbon Opening Screen */
+        #welcome-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #d81b60, #e91e63); z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; transition: top 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+        .ribbon-btn { background: #ffeb3b; color: #d81b60; border: none; padding: 20px 60px; font-size: 2rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin-top: 40px; transition: all 0.3s; font-family: 'Dancing Script', cursive; letter-spacing: 2px; }
+        .ribbon-btn:hover { transform: scale(1.1); background: #fff; }
+
+        /* 👾 Hacker Glitch Screen */
+        #hacker-screen { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; color: #0f0; font-family: monospace; font-size: 1.8rem; text-align: left; padding: 50px; z-index: 9999; box-sizing: border-box; }
+
+        /* 📐 Layout - Uncompressed */
+        .container { max-width: 1000px; margin: auto; position: relative; z-index: 1; padding-bottom: 100px; }
+        .section { padding: 100px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transform: translateY(50px); transition: 1s ease-out; }
+        .section.visible { opacity: 1; transform: translateY(0); }
+        
+        h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; color: #d81b60; margin-bottom: 20px; text-shadow: 2px 2px 5px rgba(255,255,255,0.7); }
+        p { font-size: 1.5rem; background: rgba(255, 255, 255, 0.7); padding: 25px; border-radius: 20px; max-width: 700px; line-height: 1.6; border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        /* 🔲 Glassmorphism Boxes */
+        .glass-box { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.9); padding: 40px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin-top: 30px; width: 100%; max-width: 600px; transition: 0.3s; }
+        
+        /* 🔘 Buttons */
+        .btn { background: linear-gradient(45deg, #e91e63, #d81b60); color: white; padding: 15px 40px; border: none; border-radius: 30px; font-size: 1.3rem; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4); margin: 10px; font-family: 'Quicksand'; }
+        .btn:hover { transform: translateY(-5px) scale(1.05); }
+        .btn-alt { background: white; color: #e91e63; border: 2px solid #e91e63; box-shadow: none; }
+        .btn-alt:hover { background: #fce4ec; }
+
+        /* 📱 Grids & Cards */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; width: 100%; max-width: 900px; margin-top: 40px; }
+        .cute-card { background: rgba(255, 255, 255, 0.8); border: 3px dashed #d81b60; padding: 30px; border-radius: 20px; cursor: pointer; font-weight: bold; color: #d81b60; font-size: 1.4rem; transition: 0.3s; }
+        .cute-card:hover { transform: translateY(-8px); background: white; box-shadow: 0 10px 25px rgba(216,27,96,0.2); }
+
+        /* 📦 40 DAYS MEMORY BOX (UPDATED) */
+        .memory-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; width: 100%; max-width: 600px; margin: 30px auto; }
+        .memory-day { background: #ff9a9e; color: white; padding: 15px 0; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1.2rem; transition: 0.3s; box-shadow: 0 5px 10px rgba(0,0,0,0.1); border: 2px solid white; display: flex; justify-content: center; align-items: center; }
+        .memory-day:hover { transform: scale(1.15) rotate(3deg); background: #d81b60; box-shadow: 0 8px 20px rgba(216, 27, 96, 0.4); z-index: 2; }
+        @media(max-width: 600px) { .memory-grid { grid-template-columns: repeat(5, 1fr); } }
+        
+        /* Message Animation Container */
+        .msg-box-anim {
+            background: linear-gradient(135deg, #fff, #ffe6ea); color: #d81b60; padding: 25px; border-radius: 20px;
+            margin-top: 30px; font-size: 1.4rem; font-weight: bold; font-family: 'Quicksand', sans-serif;
+            box-shadow: 0 15px 30px rgba(216,27,96,0.2); border: 3px dashed #ff9a9e;
+            animation: popUpMsg 0.6s cubic-bezier(0.17, 0.67, 0.12, 0.99) forwards;
+        }
+        @keyframes popUpMsg { 0% { transform: scale(0.5) translateY(50px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+
+        /* 👆 Fingerprint Scanner */
+        .fingerprint-box { position: relative; width: 150px; height: 180px; margin: 30px auto; border: 4px solid #d81b60; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 5rem; overflow: hidden; background: rgba(255,255,255,0.8); cursor: pointer; user-select: none; }
+        .scan-line { position: absolute; top: -10px; left: 0; width: 100%; height: 5px; background: #0f0; box-shadow: 0 0 15px #0f0; animation: scanAnim 1.5s linear infinite; display: none; }
+        @keyframes scanAnim { 0% { top: 0; } 50% { top: 100%; } 100% { top: 0; } }
+
+        /* 🍿 OurFlix */
+        .ourflix-section { background: #141414; color: white !important; padding: 50px 20px; border-radius: 20px; width: 100%; max-width: 900px; text-align: left; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .ourflix-section h1, .ourflix-section h2 { color: #e50914 !important; font-family: 'Quicksand'; font-weight: 900; letter-spacing: 2px; }
+        .row-posters { display: flex; overflow-y: hidden; overflow-x: scroll; padding: 20px; scrollbar-width: none; }
+        .row-posters::-webkit-scrollbar { display: none; }
+        .row-poster { width: 200px; height: 300px; background: #333; margin-right: 15px; border-radius: 10px; transition: transform 450ms; display: flex; justify-content: center; align-items: center; color: white; font-size: 1.2rem; text-align: center; padding: 10px; cursor: pointer; border: 2px solid #555; flex-shrink: 0; }
+        .row-poster:hover { transform: scale(1.08); background: #e50914; border-color: #fff; }
+
+        /* 🎈 Balloons */
+        #balloon-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 5000; overflow: hidden; display: none; }
+        .balloon { position: absolute; bottom: -100px; width: 60px; height: 80px; background: red; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; cursor: pointer; pointer-events: auto; animation: flyUp 6s linear forwards; box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; font-size: 2rem; color: white; }
+        .balloon::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 2px; height: 40px; background: white; }
+        @keyframes flyUp { to { bottom: 120vh; } }
+
+        /* ❄️ Snow / Angry Meter */
+        .snowflake { position: fixed; top: -10px; color: white; font-size: 1.5rem; user-select: none; z-index: 9999; animation: fall linear forwards; pointer-events: none; }
+        @keyframes fall { to { transform: translateY(110vh); } }
+
+        /* 🏮 Virtual Lantern */
+        .lantern-container { width: 100%; max-width: 600px; background: rgba(0,0,0,0.8); padding: 40px; border-radius: 20px; margin-top: 30px; position: relative; overflow: hidden; height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid #ffeb3b; }
+        .lantern-btn { background: #ffeb3b; color: #000; padding: 15px 30px; border: none; border-radius: 20px; font-weight: bold; font-size: 1.2rem; cursor: pointer; margin-top: 15px; }
+        .lantern-anim { position: absolute; bottom: 20px; width: 60px; height: 80px; background: #ff9800; border-radius: 10px 10px 5px 5px; box-shadow: 0 0 30px #ffeb3b; display: none; transition: 4s ease-in; z-index: 2; }
+        .lantern-anim::before { content: ''; position: absolute; bottom: 5px; left: 20px; width: 20px; height: 10px; background: #ffff00; filter: blur(2px); }
+
+        /* 🪞 Magic Mirror */
+        .mirror-container { position: relative; width: 320px; height: 320px; margin: 30px auto; border-radius: 50%; border: 8px solid #ff9a9e; box-shadow: 0 0 40px rgba(233, 30, 99, 0.5); overflow: hidden; background: black; display: none; }
+        #camera-video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+        .crown-overlay { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 80px; z-index: 2; }
+        
+        /* 🌌 Stargazing Box */
+        .stars-box { background: rgba(0,0,10,0.95); width: 350px; height: 350px; border-radius: 50%; position: relative; border: 5px solid #fff; box-shadow: 0 0 30px rgba(255,255,255,0.6); overflow: hidden; margin: 30px auto; }
+        .star { position: absolute; width: 15px; height: 15px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: 0.3s; z-index: 2; }
+        .star:hover { transform: scale(1.5); background: white; }
+        .star.glow { background: #ffeb3b; box-shadow: 0 0 20px #ffeb3b; transform: scale(1.3); }
+
+        /* 🪙 Scratch Card */
+        .scratch-box { position: relative; width: 350px; height: 150px; margin: 30px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.2); border: 3px solid white; }
+        .s-content { position: absolute; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:#fff; color:#d81b60; font-size: 2.2rem; font-family:'Dancing Script'; font-weight:bold; }
+        .s-cover { position: absolute; width:100%; height:100%; background:#9e9e9e; color:white; display:flex; justify-content:center; align-items:center; font-size: 1.5rem; cursor:pointer; transition: opacity 1.5s ease; z-index:2; }
+
+        /* 📜 Typewriter */
+        .typewriter-box { background: #1a1a1a; color: #e0e0e0; font-family: 'Courier Prime', monospace; padding: 40px; border-radius: 15px; text-align: left; min-height: 250px; font-size: 1.2rem; line-height: 1.8; border: 2px solid #333; width: 100%; max-width: 600px; margin-top: 20px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); }
+        .cursor { display: inline-block; width: 10px; height: 1.2rem; background: #e0e0e0; animation: blink 1s step-end infinite; }
+        
+        /* ⏳ Timeline */
+        .timeline { position: relative; max-width: 700px; margin: 50px auto; }
+        .timeline::after { content: ''; position: absolute; width: 6px; background-color: #d81b60; top: 0; bottom: 0; left: 50%; margin-left: -3px; border-radius: 3px; }
+        .tl-container { padding: 15px 50px; position: relative; width: 50%; box-sizing: border-box; }
+        .tl-container::after { content: '❤️'; position: absolute; width: 30px; height: 30px; right: -19px; background-color: white; border: 4px solid #d81b60; top: 20px; border-radius: 50%; z-index: 1; display: flex; justify-content: center; align-items: center; font-size: 1rem; }
+        .tl-left { left: 0; text-align: right; }
+        .tl-right { left: 50%; text-align: left; }
+        .tl-left::after { left: auto; right: -19px; }
+        .tl-right::after { left: -19px; }
+        .tl-content { padding: 20px; background: rgba(255,255,255,0.9); border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+        /* ✈️ VIP Boarding Pass */
+        .ticket { background: rgb(172, 122, 122); width: 100%; max-width: 600px; border-radius: 20px; display: flex; box-shadow: 0 20px 40px rgba(0,0,0,0.15); margin: 40px auto; text-align: left; overflow: hidden; border: 2px solid #fce4ec; }
+        .ticket-left { padding: 30px; flex: 3; border-right: 3px dashed #d81b60; background: linear-gradient(to right, #b18383, #fff5f7); }
+        .ticket-right { padding: 30px; flex: 1; background: #d81b60; color: rgb(168, 132, 132); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .ticket-title { font-family: 'Dancing Script'; font-size: 2.5rem; color: #d81b60; margin: 0 0 15px 0; }
+        .barcode { font-family: 'Courier Prime'; font-size: 1.5rem; letter-spacing: 5px; transform: rotate(-90deg); margin-top: 20px; }
+
+        /* 🧩 Custom Puzzle */
+        .puzzle-grid { display: grid; grid-template-columns: repeat(3, 100px); grid-template-rows: repeat(3, 100px); gap: 2px; width: 304px; margin: 30px auto; background: #ddd; border: 4px solid #d81b60; padding: 2px; border-radius: 10px; }
+        .puzzle-tile { width: 100px; height: 100px; background: #fff5f7; display: flex; justify-content: center; align-items: center; font-size: 2rem; font-weight: bold; color: #d81b60; cursor: pointer; transition: 0.2s; user-select: none; }
+        .puzzle-tile.empty { background: transparent; cursor: default; }
+
+        /* 💓 Heartbeat Sync */
+        .heartbeat-box { width: 250px; height: 250px; background: radial-gradient(circle, #e91e63, #d81b60); border-radius: 50%; margin: 40px auto; display: flex; justify-content: center; align-items: center; color: white; font-size: 5rem; cursor: pointer; box-shadow: 0 0 30px rgba(233, 30, 99, 0.6); transition: 0.1s; user-select: none; }
+        .pumping { animation: heartPump 0.8s infinite; }
+        @keyframes heartPump { 0% { transform: scale(1); box-shadow: 0 0 30px rgba(233, 30, 99, 0.6); } 50% { transform: scale(1.15); box-shadow: 0 0 60px rgba(233, 30, 99, 0.9); } 100% { transform: scale(1); box-shadow: 0 0 30px rgba(233, 30, 99, 0.6); } }
+
+        /* 📸 Gallery */
+        .gallery-wrap { display: none; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; width: 100%; max-width: 900px; margin-top: 40px; }
+        .gallery-item { background: white; padding: 15px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; }
+
+        /* 🎡 Spin Wheel */
+        #wheel-container { position: relative; width: 350px; height: 350px; margin: 30px auto; border-radius: 50%; border: 6px solid #d81b60; box-shadow: 0 15px 35px rgba(0,0,0,0.2); overflow: hidden; transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99); }
+        #wheel-pointer { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 35px solid #d81b60; z-index: 2; }
+
+        /* 🔠 Wordle Game */
+        .wordle-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 350px; margin: 25px auto; }
+        .wordle-cell { width: 60px; height: 60px; border: 3px solid #ff9a9e; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 2rem; font-weight: bold; background: white; text-transform: uppercase; }
+        .w-correct { background: #4caf50; color: white; border-color: #4caf50; }
+        .w-present { background: #ffeb3b; color: white; border-color: #ffeb3b; }
+
+        
+        input[type="password"], input[type="text"] { padding: 15px; border-radius: 30px; border: 2px solid #ff9a9e; width: 80%; font-size: 1.3rem; text-align: center; font-family: 'Quicksand'; outline: none; transition: 0.3s; }
+    /* 🔦 Flashlight Hunt Styles */
+        #flashlight-container:hover #secret-love-message {
+            /* Jab mouse andar aaye toh message thoda respond kare, logic JS sambhalega */
+        }
+
+        /* 🌟 General Styles (CLASSY PREMIUM UPDATE) */
+        body { 
+            margin: 0; font-family: 'Quicksand', sans-serif; 
+            background: linear-gradient(-45deg, #1e0933, #5a185f, #a2245b, #ff7b54, #1e0933); 
+            background-size: 400% 400%; animation: gradientBG 15s ease infinite; 
+            color: #ffffff; text-align: center; overflow-x: hidden; scroll-behavior: smooth; 
+        }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        h1, h2, h3 { text-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        p { font-size: 1.5rem; background: rgba(0, 0, 0, 0.25); padding: 25px; border-radius: 20px; max-width: 700px; margin: 0 auto 20px auto; line-height: 1.6; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.3); backdrop-filter: blur(5px); }
+
+        /* 🔲 Glassmorphism Boxes (UPGRADED) */
+        .glass-box { 
+            background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.5); border-left: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 40px; border-radius: 30px; box-shadow: 0 25px 45px rgba(0,0,0,0.4); 
+            margin-top: 30px; width: 100%; max-width: 600px; transition: transform 0.4s ease, box-shadow 0.4s ease; 
+        }
+        .glass-box:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+        
+        /* 🌈 Rainbow Land Extra CSS */
+        .stone {
+            position: absolute; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-weight: bold; color: white; font-size: 1.5rem; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.4); 
+            border: 3px solid rgba(255,255,255,0.6); transition: transform 0.3s, box-shadow 0.3s; z-index: 5;
+        }
+        .stone:hover { transform: scale(1.15); box-shadow: 0 0 25px rgba(255,255,255,0.9); }
+        .stone.active { animation: pulseGlow 1.5s infinite; border-color: #ffd700; }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 10px rgba(255,215,0,0.5); } 50% { box-shadow: 0 0 35px rgba(255,215,0,1); } 100% { box-shadow: 0 0 10px rgba(255,215,0,0.5); } }
+        
+        .rainbow-burst {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: conic-gradient(from 0deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            animation: spinRainbow 3s linear infinite; pointer-events: none; z-index: 100; mix-blend-mode: color-dodge; opacity: 0; transition: opacity 1s; border-radius: 30px;
+        }
+        @keyframes spinRainbow { 100% { transform: rotate(360deg) scale(1.5); } }
+
+
+        /* 🍿 OurFlix Gallery Styles */
+        .netflix-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px 10px;
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar for OurFlix */
+        .netflix-row::-webkit-scrollbar { height: 8px; }
+        .netflix-row::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .netflix-row::-webkit-scrollbar-thumb { background: #e50914; border-radius: 10px; }
+        
+        .netflix-item {
+            min-width: 220px; /* Picture ki width */
+            height: 320px;    /* Picture ki height */
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Zoom Effect on Hover */
+        .netflix-item:hover {
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 15px 30px rgba(229,9,20,0.4);
+            z-index: 10;
+            border-color: #e50914;
+        }
+        
+        .netflix-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Yeh picture ko stretch hone se bachayega */
+        }
+        
+        /* Bottom Caption Overlay */
+        .netflix-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            color: #fff;
+            padding: 40px 15px 15px;
+            font-size: 1.2rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .netflix-item:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+
+    
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <h1 style="color: white; font-size: 7rem; margin-bottom: 0;">🎁</h1>
+        <h1 style="color: white; margin-top: 10px; font-family:'dancing script'; font-size: 4rem;">For My Princess!</h1>
+        <button class="ribbon-btn" onclick="document.getElementById('welcome-screen').style.top = '-100vh';">Enter My Heart 🎀</button>
+    </div>
+
+    <div id="hacker-screen"></div>
+
+    <div id="balloon-container"></div>
+
+    <div class="container">
+        
+        <div class="section visible">
+            <h1 style="font-size: 5rem;">❤️ Hello Princess,</h1>
+            <p>Yeh duniya ki sab se lambi aur sab se special website hai, sirf aur sirf tumhare liye! Ek ek karke har surprise dekhti jao... 👇</p>
+        </div>
+
+        <div class="section">
+            <h1>Secret Button 👾</h1>
+            <p>Mujhe nahi lagta tumhe is button ko touch karna chahiye...</p>
+            <div class="glass-box" style="background: rgba(0,0,0,0.8); border: 2px solid #0f0;">
+                <button class="btn" style="background: #111; color: #0f0; border: 1px solid #0f0; font-family: monospace;" onclick="runHackerGlitch()">⚠️ DANGER: DO NOT TOUCH</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Princess Detector 👆</h1>
+            <p>Scan to verify if you are the real Princess.</p>
+            <div class="glass-box">
+                <div class="fingerprint-box" id="fp-btn">
+                    👆
+                    <div class="scan-line" id="fp-scan"></div>
+                </div>
+                <h3 id="fp-msg" style="display:none; color:#4caf50; font-size:1.8rem; font-family:'Dancing Script';">
+                    ✅ Identity Confirmed: The Most Beautiful Princess in the Universe!
+                </h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">The Most Beautiful Girl 🪞</h1>
+            <p>Duniya ki sab se pyari larki ko dekhna chahti ho? Niche click karo!</p>
+            <div class="glass-box">
+                <button class="btn" id="mirror-btn" onclick="startMirror()">Show Me! ✨</button>
+                <div class="mirror-container" id="mirror-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3138/3138803.png" alt="Crown" class="crown-overlay">
+                    <video id="camera-video" autoplay playsinline></video>
+                </div>
+                <h3 id="mirror-text" style="display:none; color:#d81b60; font-family:'Dancing Script'; font-size:2.5rem;">
+                    Ah! There she is. My Princess! 👑❤️
+                </h3>
+            </div>
+        </div>
+
+      <div class="section">
+            <h1 style="font-size: 4.5rem; color: #e50914; font-family: 'Arial Black', sans-serif; text-transform: uppercase; text-shadow: 2px 2px 10px rgba(229,9,20,0.5); letter-spacing: 2px;">OurFlix 🍿</h1>
+            <p>Humari pyari si memories ka apna personal cinema! Grab some popcorn! 🎬❤️</p>
+            
+            <div class="glass-box" style="padding: 20px; max-width: 900px;">
+                <div class="netflix-row">
+                    
+                    <div class="netflix-item">
+                        <img src="m1.jpg" alt="Memory 1">
+                        <div class="overlay">Shidaat pnr gadh disda sa🌹</div>
+                    </div>
+                    
+                    <div class="netflix-item">
+                        <img src="m2.jpg" alt="Memory 2">
+                        <div class="overlay">Byo my Fault be gadh disda sa hik blanket ma 😊</div>
+                    </div>
+                    
+                    <div class="netflix-item">
+                        <img src="m3.jpg" alt="Memory 3">
+                        <div class="overlay">365 days ta pnr gadh disda sa bha edo mazo endo</div>
+                    </div>
+                    
+                    <div class="netflix-item">
+                        <img src="m4.jpg" alt="Memory 4">
+                        <div class="overlay">Stranger things ta list ma aae🤪</div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">20 Days of Us 📦</h1>
+            <p>Humari 40 pyari yaadein. Pehle password btao, phir andar aao!</p>
+            <div class="glass-box" style="max-width: 700px;">
+                
+                <div id="memory-lock">
+                    <h3 style="color:#d81b60; font-size: 1.5rem;">Enter Password to Unlock Memories 🔐</h3>
+                    <input type="password" id="m-pass" placeholder="Hint: princess">
+                    <br><br>
+                    <button class="btn" onclick="unlockMemories()">Unlock Vault 🔑</button>
+                    <p id="m-err" style="color:red; display:none; font-weight:bold; margin-top:15px;">Galat Password! Dimagh lagao yaar!</p>
+                </div>
+
+                <div id="memory-content" style="display: none;">
+                    <div class="memory-grid" id="memory-grid">
+                        </div>
+                    
+                    <div id="memory-msg-box" class="msg-box-anim" style="display:none;">
+                        <span id="memory-msg-text"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Virtual Stargazing 🌌</h1>
+            <p>Asmaan ke in taaron par ek ek karke click karo. Dekho yeh mil kar kya banate hain!</p>
+            <div class="stars-box" id="stars-box">
+                <svg id="star-lines" width="100%" height="100%" style="position:absolute; top:0; left:0; z-index:1;"></svg>
+            </div>
+            <h2 id="star-confession" style="color:#d81b60; display:none; font-size: 2.5rem; font-family: 'Dancing Script';">
+                Written in the stars... I Love You! ✨
+            </h2>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Balloon Popper 🎈</h1>
+            <p>Daba kar 5 balloons phor do aur secret message dekho!</p>
+            <div class="glass-box">
+                <button class="btn" onclick="startBalloons()">Start Popping! 🎈</button>
+                <h3 id="balloon-msg" style="display:none; color:#e91e63; font-size:2.5rem; font-family:'Dancing Script'; margin-top: 20px;">
+                    Yay! I Love You! 🥰
+                </h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Digital Scratch Card 🪙</h1>
+            <p>Is grey box ko click ya tap karke scratch karo aur dekho andar kya chupa hai!</p>
+            <div class="scratch-box">
+                <div class="s-content">You mean the world to me! 🌍❤️</div>
+                <div class="s-cover" onclick="this.style.opacity='0'; setTimeout(()=>this.style.display='none', 1500)">Tap & Rub to Scratch ✨</div>
+            </div>
+        </div>
+
+        <div class="section" style="background: rgba(0,0,0,0.05); border-radius: 20px;">
+            <h1 style="font-size: 4.5rem;">A Secret Confession 📜</h1>
+            <p>Mera dil kya kehta hai, zara khud parh lo...</p>
+            <button class="btn" onclick="startTypewriter(this)">Read Letter 💌</button>
+            <div class="typewriter-box" id="tw-box" style="display: none;">
+                <span id="tw-text"></span><span class="cursor"></span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Tum Itni Special Kyun Ho? ✨</h1>
+            <p>Jab bhi tum bore ho rahi ho, is magic button ko dabana!</p>
+            <div class="glass-box">
+                <button class="btn" onclick="generateReason()">Ek Wajah Btao ❤️</button>
+                <h3 id="reason-text" style="display:none; color: #d81b60; font-size: 1.8rem; margin-top: 25px;"></h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Humari Kahani ⏳</h1>
+            <p>Kuch pyaare pal jo maine hamesha yaad rakhe hain...</p>
+            <div class="timeline">
+                <div class="tl-container tl-left"><div class="tl-content"><h3 style="color:#d81b60;">Wo Pehli Mulaqat</h3><p style="background:none; border:none; box-shadow:none; padding:0;">Jab hum pehli baar mile the!</p></div></div>
+                <div class="tl-container tl-right"><div class="tl-content"><h3 style="color:#d81b60;">Pehli Daant 😂</h3><p style="background:none; border:none; box-shadow:none; padding:0;">Jab tumne mujhe pehli baar daanta tha.</p></div></div>
+                <div class="tl-container tl-left"><div class="tl-content"><h3 style="color:#d81b60;">Best Memory ✨</h3><p style="background:none; border:none; box-shadow:none; padding:0;">Humara sath bitaya hua har lamha.</p></div></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Gussa Thanda Cooler ❄️</h1>
+            <p>Agar mujh par gussa aa raha hai toh isay dabao!</p>
+            <div class="glass-box">
+                <button class="btn" style="background: linear-gradient(45deg, #00c6ff, #0072ff);" onclick="coolDown()">Emergency Chill 🧊</button>
+                <h3 id="chill-msg" style="display:none; color:#0072ff; font-size:1.8rem; margin-top:20px;">
+                    🐧 Ab toh gussa thanda kar do na pleeease!
+                </h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Humara Future ✈️</h1>
+            <p>Maine tumhare liye ek VIP ticket book ki hai.</p>
+            <div class="ticket">
+                <div class="ticket-left">
+                    <h2 class="ticket-title">VIP Princess Airlines 👑</h2>
+                    <div><strong>Passenger:</strong> Her Highness (You) 💖</div>
+                    <div><strong>From:</strong> Best Friends Zone</div>
+                    <div><strong>To:</strong> A Lifetime of Happiness Together ✨</div>
+                </div>
+                <div class="ticket-right">
+                    <h3>FLIGHT<br>#LOVE</h3>
+                    <div class="barcode">||| | || | |||</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Tumhare Liye Coupons 🎟️</h1>
+            <p>Kabhi bhi inko mujhse claim kar sakti ho!</p>
+            <div class="grid-container">
+                <div class="cute-card" onclick="claimCoupon(this, 'Coffee Date ☕')">☕ 1 Free Coffee Date</div>
+                <div class="cute-card" onclick="claimCoupon(this, 'Ice Cream 🍦')">🍦 Midnight Ice Cream</div>
+                <div class="cute-card" onclick="claimCoupon(this, 'Big Hug 🤗')">🤗 1 Bada Wala Hug</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>"Open When" Envelopes 💌</h1>
+            <p>Apne mood ke hisaab se koi ek lifafa kholo.</p>
+            <div class="grid-container">
+                <div class="cute-card" onclick="this.innerHTML='Udaas mat ho! Main hamesha tumhare sath hoon. ❤️'; this.style.background='#fff'">Open when Sad 😢</div>
+                <div class="cute-card" onclick="this.innerHTML='Sorry yaar! Abhi gussa thook do! 🥺'; this.style.background='#fff'">Open when Angry 😡</div>
+                <div class="cute-card" onclick="this.innerHTML='Main bhi tumhe miss kar raha hoon! Call karo. 📞'; this.style.background='#fff'">Open when you Miss me 🥺</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">You Complete Me 🧩</h1>
+            <p>Is puzzle ko solve karo. Numbers ko 1 se 8 tak sequence mein lagao!</p>
+            <div class="glass-box">
+                <div class="puzzle-grid" id="puzzle-grid"></div>
+                <h3 id="puzzle-win" style="display:none; color:#d81b60; font-size:2rem; font-family:'Dancing Script';">
+                    Perfect! Just like you complete my life. 🥰
+                </h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Heartbeat Sync 💓</h1>
+            <p>Apna angootha is dil par rakh kar hold karo...</p>
+            <div class="heartbeat-box" id="heart-btn">❤️</div>
+            <h3 id="heart-msg" style="display:none; color:#d81b60; font-size:2rem; font-family:'Dancing Script';">
+                Tumhari wajah se hi toh dhadakta hai! 😘
+            </h3>
+        </div>
+
+        <div class="section">
+            <h1>Humari Yaadein 📸</h1>
+            <p>Meri secret gallery unlock karne ke liye dimagh lagao!</p>
+            <div class="glass-box" id="gallery-lock">
+                <h3 style="color:#d81b60; font-size:1.5rem;">Riddle: Humari pehli mulakat ki date? (Hint: 25)</h3>
+                <input type="password" id="g-pass" placeholder="Enter Number Only...">
+                <br><br><button class="btn" onclick="unlockGallery()">Unlock Gallery 🔑</button>
+                <p id="g-err" style="color:red; display:none; font-weight:bold;">Galat Jawab! Dimagh lagao.</p>
+            </div>
+            <div class="gallery-wrap" id="gallery-in">
+                <div class="gallery-item"><img src="pali.jpeg" alt="Pic1"><h3 style="color:#d81b60;">Best Day hundo eho! ✨</h3></div>
+                <div class="gallery-item"><img src="pali2.jpeg" alt="Pic2"><h3 style="color:#d81b60;">Wow edi cute hug! 😍</h3></div>
+                 <div class="gallery-item"><img src="pali3.jpeg" alt="Pic2"><h3 style="color:#d81b60;">Un din eho rang mahn tukh harn aan na! 😍</h3></div>
+                  <div class="gallery-item"><img src="pali4.jpeg" alt="Pic2"><h3 style="color:#d81b60;">cutie pie harne rang ta laghndo tukh! 😍</h3></div>
+                   <div class="gallery-item"><img src="pali5.jpeg" alt="Pic2"><h3 style="color:#d81b60;">Princess harne Doop be tukh touch kandi pae Jealous thendo payo aan! 😍</h3></div>
+                    <div class="gallery-item"><img src="pali6.jpeg" alt="Pic2"><h3 style="color:#d81b60;">Yr eho photo khbr ti anjali ji mobile ma detho ho! 😍</h3></div>
+                     <div class="gallery-item"><img src="pali7.jpeg" alt="Pic2"><h3 style="color:#d81b60;">Hin photo ma kasam shn angel laghndi pae aan! 😍</h3></div>
+                      <div class="gallery-item"><img src="pali8.jpeg" alt="Pic2"><h3 style="color:#d81b60;">Eho khbr ta ideal time jo aa po kirpa khn mobile wathdo hoyam po disdo hoyam tukh! 😍</h3></div>
+                       <div class="gallery-item"><img src="pali9.jpeg" alt="Pic2"><h3 style="color:#d81b60;">Eho photo jemal ditho na mahn chayo mukh penjhe dream girl mili wae! 😍</h3></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Make a Wish 🏮</h1>
+            <p>Apni koi bhi wish type karo aur lantern ko asmaan mein bhej do.</p>
+            <div class="lantern-container">
+                <input type="text" id="wish-input" placeholder="Meri wish hai ke..." style="margin-bottom: 20px; z-index:3;">
+                <button class="lantern-btn" onclick="releaseLantern()" style="z-index:3;">Release Lantern ✨</button>
+                <div class="lantern-anim" id="my-lantern"></div>
+                <h3 id="lantern-msg" style="display:none; color:white; font-family:'Dancing Script'; font-size:2rem; z-index:3; margin-top:20px;">
+                    May all your wishes come true, my Princess. ✨
+                </h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Spin The Wheel! 🎡</h1>
+            <p>Wheel ko ghumao aur dekho aaj tumhari kismat mein kya hai!</p>
+            <div class="glass-box">
+                <div id="wheel-pointer"></div>
+                <div id="wheel-container"></div>
+                <br><br><button class="btn" onclick="spinWheel()">Spin Now! 🎰</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Custom Wordle 🔠</h1>
+            <p>Batao meri life mein sab se favorite cheez kya hai? (5 letters)</p>
+            <div class="glass-box">
+                <div class="wordle-grid" id="wordle-grid"></div>
+                <p id="wordle-hint" style="color:#e91e63; font-weight:bold; font-size:1.5rem;"></p>
+                <p style="font-size:1rem;">(Keyboard se type karo aur Enter dabao!)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Aakhri Baatein... 🤫</h1>
+            <p>Is playlist ko sunte hue hamesha tumhari yaad aati hai.</p>
+            <div class="glass-box">
+                <h3 style="color:#d81b60;">🎧 Tumhari Yaad Mein</h3>
+                <audio controls style="width:100%;"><source src="song1.mp3"></audio>
+                <br><br>
+                <button class="btn btn-alt" onclick="this.innerText='Playing... 🎧'; document.getElementById('audio-sec').play();">🛑 Play Secret Voice Note</button>
+                <audio id="audio-sec"><source src="voicenote.mp3"></audio>
+            </div>
+        </div>
+ 
+
+         <div class="section">
+            <h1 style="font-size: 5rem; font-family: 'Dancing Script', cursive; color: #ffd700; text-shadow: 0 0 20px #ff8c00;">Rainbow Land 🌈</h1>
+            <p>Ek secret jadooi duniya jo sirf ek Magical Key se khulti hai. Kya tum isay explore karna chahogi?</p>
+            
+            <div class="glass-box" id="rainbow-gate-box" style="position: relative; overflow: hidden;">
+                <div id="rainbow-gate">
+                    <div style="font-size: 6rem; margin-bottom: 20px; text-shadow: 0 0 30px #fff;">🚪🔒</div>
+                    <h3 style="color: #ffd700; font-size: 2rem;">Gate is Locked!</h3>
+                    <button class="btn" id="magic-key-btn" style="background: linear-gradient(45deg, #ffd700, #ff8c00); color: #000; font-size: 1.5rem; padding: 20px 40px; margin-top: 15px;" onclick="unlockRainbowLand()">Use Magical Key 🗝️</button>
+                </div>
+                
+                <div id="rainbow-pathway" style="display: none; padding: 10px 0;">
+                    <h2 style="color: #ff9a9e; font-family: 'Dancing Script'; font-size: 2.5rem;">Walk the Path of Love! ✨</h2>
+                    
+                    <div class="pathway-container" id="path-board" style="position: relative; width: 100%; height: 400px; margin-top: 30px; background: rgba(0,0,0,0.3); border-radius: 20px; border: 2px dashed rgba(255,215,0,0.5);">
+                        
+                        <div id="princess-avatar" style="position: absolute; top: 30px; left: 30px; font-size: 3rem; transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); z-index: 10;">👸</div>
+                        
+                        <div class="stone" id="stone-1" onclick="stepOnStone(1)" style="top: 35px; left: 100px; background: #ff4b4b;">1</div>
+                        <div class="stone" id="stone-2" onclick="stepOnStone(2)" style="top: 120px; left: 220px; background: #ff9f43;">2</div>
+                        <div class="stone" id="stone-3" onclick="stepOnStone(3)" style="top: 200px; left: 120px; background: #feca57;">3</div>
+                        <div class="stone" id="stone-4" onclick="stepOnStone(4)" style="top: 280px; left: 240px; background: #1dd1a1;">4</div>
+                        <div class="stone" id="stone-5" onclick="stepOnStone(5)" style="top: 330px; left: 100px; background: #54a0ff;">5</div>
+                        <div class="stone" id="stone-6" onclick="stepOnStone(6)" style="top: 320px; left: 280px; background: #5f27cd; font-size: 2rem;">🏰</div>
+                        
+                        <div id="rainbow-burst-effect"></div>
+                    </div>
+                    
+                    <div id="path-msg" style="margin-top: 25px; font-size: 1.6rem; font-weight: bold; color: #ffd700; height: 60px; font-family: 'Quicksand'; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 15px;">
+                        Click on Step 1 to begin the journey! 💖
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Our Love Tree 🌱</h1>
+            <p>Jaise jaise hamara pyaar badhega, yeh pauda bhi bada hoga. Isay pani do!</p>
+            <div class="glass-box" style="padding: 30px;">
+                <div id="tree-stage" style="font-size: 7rem; margin-bottom: 20px; transition: all 0.5s ease;">🌱</div>
+                
+                <div style="width: 100%; background-color: #e0e0e0; border-radius: 10px; margin-bottom: 20px; height: 15px; overflow: hidden;">
+                    <div id="tree-progress" style="width: 0%; height: 100%; background: linear-gradient(45deg, #11998e, #38ef7d); transition: width 0.3s ease;"></div>
+                </div>
+
+                <button class="btn" id="water-btn" style="background: linear-gradient(45deg, #11998e, #38ef7d);" onclick="waterTheTree()">Water Our Love 💧</button>
+                
+                <h3 id="tree-win-msg" style="display:none; color:#11998e; font-size:2rem; margin-top:20px; font-family:'Dancing Script'; line-height: 1.4;">
+                    Just like this plant, my love for you keeps growing every single day! 🌸❤️
+                </h3>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">Flashlight Hunt 🔦</h1>
+            <p>Kamre mein andhera hai... apni ungli (ya mouse) ko torch ki tarah use karo aur mera secret message dhoondo!</p>
+            <div class="glass-box" style="padding: 20px;">
+                
+                <div id="flashlight-container" style="position: relative; width: 100%; height: 350px; background-color: #050505; border-radius: 20px; overflow: hidden; cursor: none; touch-action: none; border: 2px solid #ff758c;">
+                    
+                    <div id="secret-love-message" style="position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 2.2rem; font-family: 'Dancing Script'; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; text-align: center; width: 90%; text-shadow: 0 0 10px #ff758c, 0 0 20px #ff758c;">
+                        "Tum meri zindagi ki roshni ho... <br> Aur hamesha rahogi! ✨❤️"
+                    </div>
+
+                    <div id="flashlight-mask" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle 60px at 0px 0px, transparent 100%, rgba(0,0,0,0.95) 100%); pointer-events: none;"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Emergency 🛑</h1>
+            <p>Laal button kabhi nahi dabana chahiye larki!</p>
+            <div class="glass-box" style="background:transparent; box-shadow:none; border:none;">
+                <button id="prank-btn" onclick="prankClick()" style="background: red; color: white; padding: 20px 40px; font-size: 2rem; border-radius: 20px; border: none; cursor: pointer;">DO NOT CLICK 🔴</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1 style="font-size: 4.5rem;">The Ultimate Question ❤️</h1>
+            <p>Tum mere liye duniya ki sab se anmol cheez ho. Kya main bhi tumhare liye special hoon? 🥰</p>
+            <div style="position:relative; min-height:200px; width:100%; display:flex; justify-content:center; align-items:center; gap:30px; flex-wrap:wrap;">
+                <button class="btn" style="font-size:2rem; padding:20px 50px;" onclick="alert('Yayyy! I Love You Princess! 😍 Main abhi call karta hoon.')">Haan, Bohat! ❤️</button>
+                <button class="btn btn-alt" id="run-btn" style="font-size:1.5rem;" onmouseover="moveBtn()" ontouchstart="moveBtn()">Nahi, Sirf Dost 🌸</button>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script>
+        // Smooth Intersection Observer
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.15 });
+        sections.forEach(sec => observer.observe(sec));
+
+        // Background Hearts
+        setInterval(() => {
+            const h = document.createElement('div'); h.className = 'heart-bg'; h.innerHTML = '💖';
+            h.style.left = Math.random() * 100 + 'vw'; h.style.animationDuration = (Math.random() * 3 + 6) + 's';
+            document.body.appendChild(h); setTimeout(() => h.remove(), 9000);
+        }, 500);
+
+        // 👾 Hacker Glitch
+        function runHackerGlitch() {
+            const screen = document.getElementById('hacker-screen'); screen.style.display = 'block'; screen.innerHTML = "";
+            const lines = ["CRITICAL WARNING: Pari Darling Munja Dil ta Access Kayo ti...", "Harne 4 chamber tuja control ma ne...", "Scanning for the most beautiful girl...", "Match Found! 💖", "System Restoring..."];
+            let delay = 5;
+            lines.forEach(text => { setTimeout(() => { screen.innerHTML += text + "<br><br>"; }, delay); delay += 900; });
+            setTimeout(() => { screen.style.display = 'none'; }, delay + 1200);
+        }
+
+        // 📦 40 DAYS MEMORY BOX (PASSWORD & ANIMATION LOGIC)
+        function unlockMemories() {
+            const pass = document.getElementById('m-pass').value.toLowerCase().trim();
+            if(pass === "princess") { // Ye password hai, chaho toh badal lo!
+                document.getElementById('memory-lock').style.display = 'none';
+                document.getElementById('memory-content').style.display = 'block';
+            } else {
+                document.getElementById('m-err').style.display = 'block';
+            }
+        }
+
+        const memGrid = document.getElementById('memory-grid');
+        const memoryMessages = [
+            "Yaad ti First day ta tukh request mokali raat jo mahn chayo accept thendi alae na",
+            "Aeen sobhu jo ditho jemal university wendo payo hoyam insta open kayo mahn chayo muji dream girl request accept kae aa .",
+            "Khbr ti unmal muji Lab haldi pae hue uha chade library wethum wanjhe po tukh jeko message kayo ho",
+            "Aeen jemal khn tusan milyo aan n muji life wadeek colorful the wae aa aeen khbr ti unhin din ma Ramdan haldo payo ho yaad ti sajo din tusan galhindo hoyam",
+            "Bc hostel ma roti hundi na hue sajo din bukh ta hundo hoyam ta tuno hue jeko mujo din 1sec ma time guzre wendo hoyo tuno mujo doremon waro gadget hue samjh.",
+            "Aeen mujo favorite part hundo hoyo tujo radio yr tujo radio mujo favorite channel ho news jo khbr ti",
+            "Aeen yaad ti ideal time yaad ti hik dafo thyo cha Waris wath tuji test aae po mahn chayo manas jani deal sign kayu tha inji test tu wath endi na po mukh denda mahn tukh mehroz ji test wathi dendum.",
+            "Paroo tuno edi caring aan yrr mujo edo khayal rakhdi aan aeen mahn tukh phele budaindo aan muji dr tuno aan muja white cells be tuno aa ta red blood cells be tuno aan  🥺",
+            "Yr khbr ti mahn specially ideal ta first line ma waindo hoyam sir asad ji wesa na hue tadi sir chwndo ho jeka chokra glasses wara ne uha wainda po mahn kura glasses wathi aayo hoyam tuji khi khi budar lae",
+            "Aeen hik dafa ji galh aa shivratri hue mahn hoyam ghar tuno aae hue pooja lae po  dheeraj call chae payo pari aae ti tuji rakhe aa line ma po mahn ahyum jaldi ma po thyo cha jeko pooja ja samhan dendo aa un pnr khe gadh dena po gadh pooja kae hue sa ❤️",
+            "Yaad ti tuno mukh hug lae chayo ho po mahn nindr ma be blush kayan payo khbr ti first time ma mujo dil mellt the wayo ho",
+            "Baki jam galhyu ne harne website khe deploy kayan po update kandum po parhja byu be galhyu"
+        ];
+        
+        for(let i = 1; i <= 20; i++) {
+            const box = document.createElement('div');
+            box.className = 'memory-day';
+            box.innerText = i;
+            box.onclick = () => {
+                const msg = memoryMessages[Math.floor(Math.random() * memoryMessages.length)];
+                const msgBox = document.getElementById('memory-msg-box');
+                const msgText = document.getElementById('memory-msg-text');
+                
+                // Reset animation
+                msgBox.style.animation = 'none';
+                msgBox.offsetHeight; /* trigger reflow */
+                msgBox.style.animation = null; 
+                
+                // Set message and display
+                msgText.innerHTML = `<span style="font-family:'Dancing Script'; font-size:2rem;">Day ${i} 💌</span><br><br>${msg}`;
+                msgBox.style.display = 'block';
+            };
+            memGrid.appendChild(box);
+        }
+
+        // 👆 Fingerprint Scanner
+        const fpBtn = document.getElementById('fp-btn'); let fpTimer;
+        const startFP = (e) => {
+            if(e) e.preventDefault(); document.getElementById('fp-scan').style.display = 'block';
+            fpTimer = setTimeout(() => {
+                document.getElementById('fp-msg').style.display = 'block';
+                fpBtn.style.background = '#e8f5e9'; fpBtn.style.borderColor = '#4caf50';
+                document.getElementById('fp-scan').style.display = 'none';
+            }, 3000);
+        };
+        const stopFP = () => { clearTimeout(fpTimer); document.getElementById('fp-scan').style.display = 'none'; };
+        fpBtn.addEventListener('mousedown', startFP); fpBtn.addEventListener('mouseup', stopFP); fpBtn.addEventListener('mouseleave', stopFP); fpBtn.addEventListener('touchstart', startFP); fpBtn.addEventListener('touchend', stopFP);
+
+        // 🪞 Magic Mirror
+        async function startMirror() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+                document.getElementById('camera-video').srcObject = stream; document.getElementById('mirror-btn').style.display = 'none';
+                document.getElementById('mirror-box').style.display = 'block'; setTimeout(() => document.getElementById('mirror-text').style.display = 'block', 2000);
+            } catch (err) { alert("Camera permission chahiye Princess ko dekhne ke liye! 🥺"); }
+        }
+
+        // 🌌 Stargazing
+        const starsBox = document.getElementById('stars-box'); const starLines = document.getElementById('star-lines');
+        const starCoords = [ { id: 1, x: 80, y: 80 }, { id: 2, x: 250, y: 100 }, { id: 3, x: 280, y: 250 }, { id: 4, x: 100, y: 270 } ];
+        let clickedStars = [];
+        starCoords.forEach(s => {
+            const el = document.createElement('div'); el.className = 'star'; el.id = 'star-' + s.id;
+            el.style.left = s.x + 'px'; el.style.top = s.y + 'px';
+            el.onclick = () => {
+                if(clickedStars.includes(s.id)) return; clickedStars.push({id:s.id, x:s.x, y:s.y});
+                el.classList.add('glow');
+                if(clickedStars.length > 1) {
+                    const prev = clickedStars[clickedStars.length - 2];
+                    starLines.innerHTML += `<line x1="${prev.x + 7}" y1="${prev.y + 7}" x2="${s.x + 7}" y2="${s.y + 7}" stroke="white" stroke-width="3" stroke-dasharray="5,5" />`;
+                }
+                if(clickedStars.length === 4) setTimeout(() => document.getElementById('star-confession').style.display = 'block', 500);
+            }; starsBox.appendChild(el);
+        });
+
+        // 🎈 Balloons
+        let poppedCount = 0;
+        function startBalloons() {
+            const container = document.getElementById('balloon-container'); container.style.display = 'block';
+            let bInterval = setInterval(() => {
+                if(poppedCount >= 5) { clearInterval(bInterval); container.style.display = 'none'; return; }
+                const b = document.createElement('div'); b.className = 'balloon'; b.innerHTML = '❤️';
+                b.style.left = Math.random() * 80 + 10 + 'vw';
+                b.onclick = () => { 
+                    b.remove(); poppedCount++; 
+                    if(poppedCount === 5) document.getElementById('balloon-msg').style.display = 'block'; 
+                }; container.appendChild(b);
+                setTimeout(() => { if(b.parentNode) b.remove(); }, 6000);
+            }, 800);
+        }
+
+        // 📜 Typewriter
+        const letterContent = "My Dearest Princess,\n\nJab tum yeh parh rahi hogi, shayad tumhare chehre par ek choti si smile ho.\nMain bas yeh batana chahta tha ke meri zindagi mein aane ke liye shukriya.\nTumhari baatein, tumhara gussa, tumhara hasna... sab kuch perfect hai.\n\nHamesha aisi hi rehna.\n\nYours Truly. ❤️";
+        let twIndex = 0; let twTyping = false;
+        function startTypewriter(btn) {
+            if(twTyping) return; btn.style.display = 'none'; document.getElementById('tw-box').style.display = 'block';
+            twTyping = true; typeNextChar();
+        }
+        function typeNextChar() {
+            if (twIndex < letterContent.length) {
+                const char = letterContent.charAt(twIndex); document.getElementById('tw-text').innerHTML += (char === '\n' ? '<br>' : char);
+                twIndex++; setTimeout(typeNextChar, 60);
+            }
+        }
+
+        // 🪄 Reasons Generator
+        const reasons = ["Kyunke tumhari smile pyari hai! 😊", "Kyunke tum meri bakwas sunti ho. 😂", "Kyunke tum jaisi ho, perfect ho! ✨", "Kyunke tumhare sath time bohat jaldi guzarta hai. ⏳"];
+        function generateReason() { const rText = document.getElementById('reason-text'); rText.innerText = reasons[Math.floor(Math.random() * reasons.length)]; rText.style.display = 'block'; }
+
+        // ❄️ Angry Meter (Snow)
+        let isChilled = false;
+        function coolDown() {
+            if(isChilled) return; isChilled = true; document.body.style.background = '#87CEEB'; document.getElementById('chill-msg').style.display = 'block';
+            setInterval(() => {
+                const snow = document.createElement('div'); snow.className = 'snowflake'; snow.innerHTML = '❄️';
+                snow.style.left = Math.random() * 100 + 'vw'; snow.style.animationDuration = Math.random() * 3 + 2 + 's';
+                document.body.appendChild(snow); setTimeout(() => snow.remove(), 5000);
+            }, 100);
+        }
+
+        // 🧩 Puzzle Game
+        const puzzleGrid = document.getElementById('puzzle-grid'); let tiles = [1, 5, 2, 4, 0, 3, 7, 8, 6]; 
+        function renderPuzzle() {
+            puzzleGrid.innerHTML = '';
+            tiles.forEach((num, index) => {
+                const tile = document.createElement('div'); tile.className = 'puzzle-tile';
+                if (num === 0) tile.classList.add('empty');
+                else { tile.innerText = num; tile.onclick = () => moveTile(index); }
+                puzzleGrid.appendChild(tile);
+            });
+        }
+        function moveTile(index) {
+            const emptyIndex = tiles.indexOf(0); const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - 3, emptyIndex + 3];
+            if (emptyIndex % 3 === 0 && index === emptyIndex - 1) return;
+            if ((emptyIndex + 1) % 3 === 0 && index === emptyIndex + 1) return;
+            if (validMoves.includes(index)) {
+                tiles[emptyIndex] = tiles[index]; tiles[index] = 0; renderPuzzle();
+                if (tiles.join(',') === "1,2,3,4,5,6,7,8,0") { document.getElementById('puzzle-win').style.display = 'block'; puzzleGrid.style.border = '4px solid #4caf50'; }
+            }
+        }
+        renderPuzzle();
+
+        // 💓 Heartbeat Sync
+        const heartBtn = document.getElementById('heart-btn'); let heartTimer;
+        const startHB = (e) => { 
+            if(e) e.preventDefault(); heartBtn.classList.add('pumping'); if(navigator.vibrate) navigator.vibrate([100, 50, 100, 500, 100, 50, 100]);
+            heartTimer = setTimeout(() => { document.getElementById('heart-msg').style.display = 'block'; heartBtn.style.transform = 'scale(1.5)'; heartBtn.style.background = '#4caf50'; heartBtn.innerText = '🥰'; heartBtn.classList.remove('pumping'); if(navigator.vibrate) navigator.vibrate(1000); }, 3500);
+        };
+        const stopHB = () => { clearTimeout(heartTimer); heartBtn.classList.remove('pumping'); };
+        heartBtn.addEventListener('mousedown', startHB); heartBtn.addEventListener('mouseup', stopHB); heartBtn.addEventListener('mouseleave', stopHB); heartBtn.addEventListener('touchstart', startHB); heartBtn.addEventListener('touchend', stopHB);
+
+        // 📸 Gallery Unlock
+        function unlockGallery() { 
+            if(document.getElementById('g-pass').value.trim() === "25") { document.getElementById('gallery-lock').style.display = 'none'; document.getElementById('gallery-in').style.display = 'grid'; } else { document.getElementById('g-err').style.display = 'block'; }
+        }
+
+        // 🏮 Virtual Lantern
+        function releaseLantern() {
+            const input = document.getElementById('wish-input').value;
+            if(!input) { alert("Pehle koi pyari si wish toh likho!"); return; }
+            const lantern = document.getElementById('my-lantern'); lantern.style.display = 'block';
+            setTimeout(() => { lantern.style.bottom = '150%'; }, 100); setTimeout(() => { document.getElementById('lantern-msg').style.display = 'block'; }, 2000);
+        }
+
+        // 🎡 Spin Wheel
+        const wheelContainer = document.getElementById('wheel-container');
+        const prizes = ["Coffee ☕", "Pizza 🍕", "Massage 💆‍♀️", "A Secret!", "Big Hug 🤗", "Shopping 🛍️"];
+        prizes.forEach((p, i) => {
+            const el = document.createElement('div'); el.style.position = 'absolute'; el.style.width = '100%'; el.style.height = '100%';
+            el.style.transform = `rotate(${i * 60}deg)`; el.style.transformOrigin = '50% 50%'; el.style.display = 'flex'; el.style.justifyContent = 'center'; el.style.paddingTop = '20px';
+            el.style.fontWeight = 'bold'; el.style.color = '#d81b60'; el.style.fontSize = '1.3rem'; el.style.background = i % 2 === 0 ? '#fff5f7' : '#fce4ec'; el.innerHTML = p; wheelContainer.appendChild(el);
+        });
+        let isSpinning = false;
+        function spinWheel() {
+            if(isSpinning) return; isSpinning = true; const deg = (5 + Math.random() * 5) * 360; wheelContainer.style.transform = `rotate(${deg}deg)`;
+            setTimeout(() => { isSpinning = false; const stopIndex = Math.floor((360 - (deg % 360) + 30) % 360 / 60); alert(`You won: "${prizes[stopIndex]}"! Claim it from me! 😉`); }, 4000);
+        }
+
+        // 🔠 Wordle
+        const wordleWord = "SMILE"; let currentGuess = ""; let attempts = 0; const grid = document.getElementById('wordle-grid');
+        for(let i=0; i<30; i++) grid.appendChild(document.createElement('div')).className = 'wordle-cell'; 
+        window.addEventListener('keyup', e => {
+            if(attempts >= 6 || currentGuess === wordleWord) return;
+            if(e.key.length === 1 && currentGuess.length < 5 && /[a-zA-Z]/.test(e.key)) { currentGuess += e.key.toUpperCase(); fillGrid(); }
+            if(e.key === 'Backspace') { currentGuess = currentGuess.slice(0, -1); fillGrid(); }
+            if(e.key === 'Enter' && currentGuess.length === 5) checkGuess();
+        });
+        function fillGrid() { const cells = grid.querySelectorAll('.wordle-cell'); for(let i=0; i<5; i++) cells[attempts*5+i].innerText = currentGuess[i] || ""; }
+        function checkGuess() {
+            const cells = grid.querySelectorAll('.wordle-cell');
+            for(let i=0; i<5; i++) {
+                if(currentGuess[i] === wordleWord[i]) cells[attempts*5+i].classList.add('w-correct');
+                else if(wordleWord.includes(currentGuess[i])) cells[attempts*5+i].classList.add('w-present');
+            }
+            if(currentGuess === wordleWord) document.getElementById('wordle-hint').innerText = "Correct! 🎉 Tumhari SMILE! 🥰";
+            attempts++; currentGuess = "";
+        }
+
+        // 13. Other Interactions
+        function claimCoupon(el, name) { el.innerHTML = `✅ Claimed!<br><span style='font-size:1rem; font-weight:normal;'>(Take a screenshot)</span>`; el.style.background = '#e0f7fa'; alert(`Tumne "${name}" claim kar liya! Screenshot lo aur bhej do. 😉`); }
+        function prankClick() { if(!window.prankActive) { window.prankActive = true; movePrankBtn(); return; } }
+        function movePrankBtn() { const btn = document.getElementById('prank-btn'); if(!window.prankActive) return; btn.style.position = 'absolute'; btn.style.left = Math.random() * 60 + 10 + '%'; btn.style.top = Math.random() * 60 + 10 + '%'; btn.innerText = "RUN CATCH ME! 🏃‍♂️"; }
+        function moveBtn() { const btn = document.getElementById('run-btn'); btn.style.position = 'absolute'; btn.style.left = Math.random() * 70 + '%'; btn.style.top = Math.random() * 70 + '%'; }
+  // ==========================================
+        // 🌱 1. OUR LOVE TREE LOGIC
+        // ==========================================
+        let treeWaterCount = 0;
+        const treeStages = ['🌱', '🌿', '🪴', '🌳', '🌸', '💐✨'];
+
+        function waterTheTree() {
+            if (treeWaterCount >= 5) return; // Max stage reached
+
+            treeWaterCount++;
+            let progressPercent = (treeWaterCount / 5) * 100;
+            document.getElementById('tree-progress').style.width = progressPercent + '%';
+
+            // Change Emoji based on stage
+            if (treeWaterCount < treeStages.length) {
+                let stageElement = document.getElementById('tree-stage');
+                stageElement.style.transform = 'scale(1.3)'; // Pop effect
+                setTimeout(() => {
+                    stageElement.innerText = treeStages[treeWaterCount];
+                    stageElement.style.transform = 'scale(1)';
+                }, 200);
+            }
+
+            // Win Condition (Tree fully grown)
+            if (treeWaterCount === 5) {
+                document.getElementById('water-btn').style.display = 'none';
+                setTimeout(() => {
+                    document.getElementById('tree-win-msg').style.display = 'block';
+                    document.getElementById('tree-win-msg').style.animation = 'fadeIn 1s ease forwards';
+                }, 500);
+            }
+        }
+
+
+        // ==========================================
+        // 🔦 2. FLASHLIGHT HUNT LOGIC
+        // ==========================================
+        const flashContainer = document.getElementById('flashlight-container');
+        const flashMask = document.getElementById('flashlight-mask');
+        const secretMsg = document.getElementById('secret-love-message');
+
+        function updateFlashlight(e) {
+            let rect = flashContainer.getBoundingClientRect();
+            let x, y;
+
+            // Check agar Touch event hai ya Mouse event
+            if (e.touches) {
+                x = e.touches[0].clientX - rect.left;
+                y = e.touches[0].clientY - rect.top;
+            } else {
+                x = e.clientX - rect.left;
+                y = e.clientY - rect.top;
+            }
+
+            // Flashlight ka circle move karne ke liye mask update karein
+            flashMask.style.background = `radial-gradient(circle 70px at ${x}px ${y}px, transparent 100%, rgba(5,5,5,0.98) 100%)`;
+
+            // Check proximity to secret message (Collision check)
+            let msgRect = secretMsg.getBoundingClientRect();
+            let msgCenterX = msgRect.left + msgRect.width / 2 - rect.left;
+            let msgCenterY = msgRect.top + msgRect.height / 2 - rect.top;
+
+            // Distance formula
+            let distance = Math.sqrt((x - msgCenterX) ** 2 + (y - msgCenterY) ** 2);
+
+            // Agar torch message ke paas aaye toh message dheere dheere glow kare
+            if (distance < 120) {
+                secretMsg.style.opacity = '1';
+            } else {
+                secretMsg.style.opacity = '0';
+            }
+        }
+
+        // Mouse Events
+        flashContainer.addEventListener('mousemove', updateFlashlight);
+        flashContainer.addEventListener('mouseleave', () => {
+            // Mouse bahar jaye toh sab andhera aur message gayab
+            flashMask.style.background = 'rgba(5,5,5,1)';
+            secretMsg.style.opacity = '0';
+        });
+
+        // Touch Events (Mobile support)
+        flashContainer.addEventListener('touchmove', function(e) {
+            e.preventDefault(); // Scrolling rokne ke liye game ke andar
+            updateFlashlight(e);
+        }, { passive: false });
+
+        flashContainer.addEventListener('touchend', () => {
+            flashMask.style.background = 'rgba(5,5,5,1)';
+            secretMsg.style.opacity = '0';
+        });
+
+        // ==========================================
+        // 🌈 3. MAGICAL RAINBOW LAND LOGIC
+        // ==========================================
+        let currentPathStep = 0;
+        const pathMessages = [
+            "Pehla step! Humari pyari si dosti ki shuruwat... 💕",
+            "Wo pehla ehsaas, jab tum special lagne lagi! ✨",
+            "Wo saari late-night cute baatein... 🌙",
+            "Tumhari cuteness jis par main fida hoon! 😍",
+            "Mera promise: Hamesha tumhara sath nibhane ka! 🤝",
+            "TUM MERA RAINBOW HO! 🌈 My Princess! 👑❤️"
+        ];
+
+        function unlockRainbowLand() {
+            const gate = document.getElementById('rainbow-gate');
+            const path = document.getElementById('rainbow-pathway');
+            
+            // Unlock Animation
+            gate.style.transform = 'scale(0.8)';
+            gate.style.opacity = '0';
+            
+            setTimeout(() => {
+                gate.style.display = 'none';
+                path.style.display = 'block';
+                // Activate first stone
+                document.getElementById('stone-1').classList.add('active');
+            }, 500);
+        }
+
+        function stepOnStone(stepNum) {
+            if (stepNum !== currentPathStep + 1) {
+                alert("Princess, pehle pichla step toh par karo! Cheating nahi chalegi 😉");
+                return;
+            }
+            
+            currentPathStep = stepNum;
+            const targetStone = document.getElementById('stone-' + stepNum);
+            const avatar = document.getElementById('princess-avatar');
+            const msgBox = document.getElementById('path-msg');
+            
+            // Move Avatar perfectly on top of the stone
+            avatar.style.top = (targetStone.offsetTop - 45) + 'px';
+            avatar.style.left = (targetStone.offsetLeft - 10) + 'px';
+            
+            // Update Message with cute animation
+            msgBox.style.opacity = 0;
+            setTimeout(() => {
+                msgBox.innerText = pathMessages[stepNum - 1];
+                msgBox.style.opacity = 1;
+            }, 300);
+            
+            // Update glow effects
+            targetStone.classList.remove('active');
+            if (stepNum < 6) {
+                document.getElementById('stone-' + (stepNum + 1)).classList.add('active');
+            } else {
+                // Finale Reached!
+                triggerRainbowFinale();
+            }
+        }
+
+        function triggerRainbowFinale() {
+            const burstBox = document.getElementById('rainbow-burst-effect');
+            burstBox.className = 'rainbow-burst';
+            setTimeout(() => { burstBox.style.opacity = '0.6'; }, 500);
+            
+            document.getElementById('path-msg').innerHTML = "<span style='font-size:2.2rem; color: #fff; text-shadow: 0 0 15px #ff00ff; font-family: Dancing Script;'>You reached my Heart's Castle! 🥰🏰</span>";
+            
+            // Agar purana balloon function mojood hai toh use call karlo
+            if(typeof startBalloons === 'function') {
+                setTimeout(() => { startBalloons(); }, 1000);
+            }
+        }
+  </script>
+</body>
+</html>
